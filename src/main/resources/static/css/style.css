@@ -1,0 +1,291 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+html {
+    background-color:#202020
+}
+
+header {
+    height: 70px;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: #000000;
+}
+
+header .favourites {
+    position:absolute;
+    margin-left: 60%;
+    margin-top: 15px;
+}
+
+header .car_add {
+    position: absolute;
+    margin-left: 60%;
+    margin-top: 40px;
+}
+
+.search {
+    position: absolute;
+    margin: 14px;
+    width: 320px;
+}
+
+.header__auth{
+    position: absolute;
+    color: #9E9F9F;
+    border: 2px solid #620CAC;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    padding-top: 7px;
+    padding-left: 15px;
+    margin-top:15px;
+    margin-left: 70%;
+}
+
+.search_field {
+    width: 250px;
+    height: 42px;
+    border: 2px solid #620CAC;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    text-align: center;
+    background: #202020;
+    color: #9E9F9F;
+}
+
+.submit_button {
+    width: 50px;
+    height: 42px;
+    border: 2px solid #620CAC;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    background: #202020;
+    color: #9E9F9F;
+
+}
+
+
+body {
+    background: #202020;
+    height: 100vh;
+
+}
+
+
+.card {
+    background-color: #000000;
+    width: 400px;
+    height: 350px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    border-radius: 10px;
+    border: 2px solid #620CAC;
+    transition: 0.2s;
+    position: relative;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.card__image {
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.card__top {
+    flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden; /* Скрываем, что выходит за пределы */
+}
+
+.card__title {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 150%;
+}
+
+.card__image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card__image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Встраиваем картинку в контейнер card__image */
+    transition: 0.2s;
+}
+
+.card__bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; /* Занимаем всю оставшуюся высоту карточки */
+    padding: 10px;
+    margin-left: 2px;
+}
+
+.card__bottom .trash .btn {
+
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    border: none;
+    align-content: center;
+}
+
+.card__bottom .trash ion-icon{
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+.card ion-icon {
+    color:white;
+
+}
+
+.card__bottom .like {
+    margin-bottom: 1px;
+    margin-right: 2px;
+}
+
+.card__bottom .like ion-icon {
+    color: red;
+    width:30px;
+
+    height: 30px;
+}
+
+.card__bottom .activities {
+    display: flex;
+
+}
+
+.cards {
+    color: white;
+    margin-top: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    row-gap:20px;
+    column-gap:20px;
+    justify-content: center;
+    justify-items: center; /* Размещаем карточку по центру */
+}
+
+.email_logout {
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    color: white;
+    margin-left: 70%;
+    margin-top: 20px;
+}
+
+.email_logout .btn{
+    background-color: #000;
+    height: 20px;
+    border: none;
+}
+.email_logout ion-icon {
+    color: red;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+}
+
+/*Информация о машине*/
+.top img {
+    width: 800px;
+    height: 500px;
+    margin-top: 30px;
+}
+
+.car_info {
+    color:white;
+}
+
+li {
+    list-style-type: none;
+}
+
+.trademark {
+
+    font-size: 56px;
+}
+
+.clazz, .power, .price {
+    font-size: 32px;
+}
+
+header ion-icon {
+    position: relative;
+    color:white;
+    margin-top: 6px;
+    margin-left: 10px;
+    width: 64px;
+    height: 64px;
+}
+
+
+
+
+/*бронирование*/
+.ui-datepicker-calendar, .ui-datepicker-month, .ui-datepicker-title {
+    background-color: #000;
+}
+
+.booking_section {
+    background: #000000;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em #620CAC;
+    gap: 2em;
+    width: 200px;
+}
+
+.booking_section .booking_form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items:center;
+}
+
+.booking_form  input{
+    outline: none;
+    border: none;
+    background-color: #202020;
+    color: white;
+}
+
+.booking_section .booking_button button{
+    margin-top: 3px;
+    height:3em;
+    background: #620CAC;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+

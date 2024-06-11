@@ -3,23 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"  type="text/css" href="/css/auth.css">
+
 </head>
 <body>
-    <form th:method="POST" th:action="@{/registration}" th:object="${user}">
+<div class="screen">
+    <form class="auth_form" th:method="POST" th:action="@{/registration}" th:object="${user}" >
+        <div class="email">
+            <label for="username">Электронная почта</label>
+            <div class="sec-2">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input name="username" th:field="*{email}" id="username" placeholder="example" type="email"/>
+            </div>
+        </div>
 
-        <label for="email"></label>
-        <input type="text" th:field="*{email}" id="email" placeholder="Адрес электронной почты">
-        <br/>
+        <div class="phone">
+            <label for="phoneNumber">Номер телефона</label>
+            <div class="sec-2">
+                <ion-icon name="call"></ion-icon>
+                <input name="username"  type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="example"/>
+            </div>
+        </div>
 
-        <label for="phoneNumber"></label>
-        <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Номер телефона">
-        <br/>
+        <div class="password">
+            <label for="password">Пароль</label>
+            <div class="sec-2">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input class="pas" th:field="*{password}"  id="password" name="password" placeholder="············" type="password"/>
+            </div>
 
-        <label for="password"></label>
-        <input type="password" th:field="*{password}" id="password" placeholder="Пароль">
-        <br/>
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input type="submit" value="Зарегистрироваться">
+            <input name="_csrf" type="hidden" value="${_csrf.token}">
+
+        </div>
+
+        <input class="login_button" type="submit" value="Зарегестрироваться">
     </form>
+    <div class="footer"><a th:href="@{/login}">Войти</a></div>
+</div>
+
 </body>
 </html>

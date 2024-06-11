@@ -21,14 +21,8 @@ public class UserController {
     private final ConversionService conversionService;
 
     @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("user", new User());
+    public String login() {
         return "auth/login";
-    }
-
-    @PostMapping("/login")
-    public String login(@ModelAttribute User user, Model model) {
-        return "redirect:/";
     }
 
     @GetMapping("/registration")
@@ -38,7 +32,8 @@ public class UserController {
 
     @PostMapping("/registration")
     public String createUser(User user, Model model) {
-        if(userService.createUser(user)) {
+        System.out.println(user);
+        if(!userService.createUser(user)) {
             model.addAttribute("errorMessage", "Такой пользователь уже существует");
         }
         userService.createUser(user);

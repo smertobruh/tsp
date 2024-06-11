@@ -1,6 +1,7 @@
 package com.aliexpress.tsp.exceptions;
 
 public class NotAuthorizationException extends RuntimeException {
+
     public NotAuthorizationException() {
     }
 

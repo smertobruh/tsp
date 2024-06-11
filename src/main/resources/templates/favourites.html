@@ -3,49 +3,17 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cars</title>
+    <title>Favourites</title>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
     <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
-    <form METHOD="get" class="search" th:href="@{/}">
 
-        <input class="search_field" name="carModel" placeholder="Поиск по модели" type="search">
-        <input class="submit_button" type="submit" value="Найти">
-    </form>
-
-    <div>
-        <div class="header__auth" sec:authorize="!isAuthenticated()">
-            <a th:href="@{/login}"> Войти </a>
-            <a th:href="@{/registration}">&nbsp;Зарегестрироваться</a>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="email_logout">
-            <a class="user_email" th:text="${user.getEmail}"></a>
-            <form name="logoutForm" th:action="@{/logout}" method="post">
-                <button type="submit" name="plus" value="" class="btn btn-primary">
-                    <ion-icon name="log-out"></ion-icon>
-                </button>
-            </form>
-
-        </div>
-
-
-
-    </div>
-
-    <div class="favourites">
-        <a th:href="@{/favourites}">Избранное</a>
-    </div>
-
-    <div class="car_add" sec:authorize="hasRole('ROLE_ADMIN')">
-        <a th:href="@{/admin/add}"> Добавить машину</a>
-    </div>
 
 </header>
 
-<div class="container"></div>
+
 <div class="cards">
 
     <div class="card" th:each="car : ${cars}">
@@ -94,7 +62,6 @@
 
     </div>
 </div>
-
 
 </body>
 </html>

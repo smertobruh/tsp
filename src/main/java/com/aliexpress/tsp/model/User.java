@@ -3,21 +3,20 @@ package com.aliexpress.tsp.model;
 
 import com.aliexpress.tsp.model.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.*;
+
 
 @Entity
+@Table(name="USERS")
 @Data
-@Table(name = "USERS")
-@AllArgsConstructor
-@NoArgsConstructor
+@EqualsAndHashCode
 public class User implements UserDetails {
 
     @Id
@@ -26,32 +25,25 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
     private Long id;
 
-    @Column(name = "EMAIL")
+    @Column(name="EMAIL", unique = true)
     private String email;
 
-    @Column(name = "PASSWORD")
-    private String password;
-
-    @Column(name = "PHONENUMBER")
+    @Column(name="PHONENUMBER", unique = true)
     private String phoneNumber;
 
+    @Column(name = "PASSWORD",length = 1000)
+    private String password;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name="USER_ROLES", joinColumns = @JoinColumn(name = "USERID"))
+    @CollectionTable(name="user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "FAVOURITES",
-            joinColumns = { @JoinColumn(name = "USERID") },
-            inverseJoinColumns = { @JoinColumn(name = "CARID") }
-    )
-    private Set<Car> cars = new HashSet<>();
+
+
 
     @OneToMany(mappedBy = "user")
     private Set<Booking> bookings = new HashSet<>();
-
-
 
     //security
     @Override
@@ -83,4 +75,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

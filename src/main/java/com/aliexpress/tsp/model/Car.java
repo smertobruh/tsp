@@ -1,16 +1,16 @@
 package com.aliexpress.tsp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Cascade;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "CARS")
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 public class Car {
@@ -33,10 +33,29 @@ public class Car {
     @Column(name = "ENGINEPOWER")
     private int enginePower;
 
-    @ManyToMany(mappedBy = "cars")
+    @Column(name = "PRICE", nullable = true)
+    private int price;
+
+    @ManyToMany
+    @JoinTable(
+            name = "FAVOURITES",
+            joinColumns = { @JoinColumn(name = "CARID") },
+            inverseJoinColumns = { @JoinColumn(name = "USERID") }
+    )
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car", cascade = {CascadeType.ALL})
     private Set<Booking> bookings = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "car")
+    private List<Image> images = new ArrayList<>();
+
+    @Column(name="PREVIEW_IMAGEID")
+    private Long previewImageID;
+
+    public void addImageToCar(Image image) {
+        image.setCar(this);
+        images.add(image);
+    }
 
 }

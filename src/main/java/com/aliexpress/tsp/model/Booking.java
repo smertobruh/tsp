@@ -22,11 +22,11 @@ public class Booking {
     @Column(name = "BOOKID")
     private Long bookID;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "CARID")
     private Car car;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "USERID")
     private User user;
 

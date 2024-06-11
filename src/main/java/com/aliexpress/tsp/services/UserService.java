@@ -23,9 +23,10 @@ public class UserService {
 
     public boolean createUser(User user){
         String email = user.getEmail();
-        if(userRepository.findByEmail(email) != null) return false;
+        if(userRepository.findByEmail(email).isPresent()) return false;
         user.getRoles().add(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPhoneNumber(user.getPhoneNumber());
         userRepository.save(user);
         log.info("Saved new user with email: {}", email);
         return true;

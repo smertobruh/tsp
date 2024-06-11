@@ -1,0 +1,237 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #202020;
+    height: 100vh;
+
+}
+
+.screen {
+    background: #000000;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em #620CAC;
+    gap: 2em;
+    width: 300px;
+}
+
+.screen .auth_form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.screen .email {
+    background: #202020;
+    box-shadow: 0 0 2em #202020;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: white;
+    margin-top: 1em;
+}
+
+.screen .email input {
+    background-color: #202020;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.screen .email input::placeholder {
+    color: white;
+}
+
+.screen .email ion-icon {
+    color: white;
+    margin-bottom: -0.2em;
+}
+
+.screen .phone {
+    background: #202020;
+    box-shadow: 0 0 2em #202020;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: white;
+    margin-top: 1em;
+}
+
+.screen .phone input {
+    background-color: #202020;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.screen .phone input::placeholder {
+    color: white;
+}
+
+.screen .phone ion-icon {
+    color: white;
+    margin-bottom: -0.2em;
+}
+
+
+.screen .password {
+    background: #202020;
+    box-shadow: 0 0 2em #202020;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: white;
+}
+
+
+.screen .password input {
+    outline: none;
+    border: none;
+    background-color: #202020;
+    color: white;
+}
+
+.screen .password input::placeholder {
+    color: white;
+}
+.screen .password ion-icon {
+    color: white;
+    margin-bottom: -0.2em;
+}
+
+.screen .login_button {
+    padding: 1em;
+    background: #620CAC;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.screen .footer {
+    display: flex;
+    font-size: 0.7em;
+    color: white;
+    gap: 14em;
+    padding-bottom: 10em;
+}
+.screen .footer a {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/*добавление машины*/
+
+.add_screen {
+    background: #000000;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em #620CAC;
+    gap: 2em;
+    width: 500px;
+}
+
+.screen .form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.add_screen .model, .add_screen .trademark, .add_screen .clazz, .add_screen .price, .add_screen .power  {
+    background: #202020;
+    box-shadow: 0 0 2em #202020;
+    padding: 1em;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: white;
+}
+
+
+.add_screen .model input,
+.add_screen .trademark input,
+.add_screen .clazz input,
+.add_screen .price input,
+.add_screen .power input {
+    outline: none;
+    border: none;
+    background-color: #202020;
+    color: white;
+}
+
+.add_screen .model input::placeholder,
+.add_screen .trademark input::placeholder,
+.add_screen .clazz input::placeholder,
+.add_screen .price,
+.add_screen .power input::placeholder {
+    color: white;
+}
+
+/*Загрузка фотографий*/
+.input-file {
+    position: relative;
+    display: inline-block;
+}
+.input-file span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    vertical-align: middle;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 30px;
+    background-color: #620CAC;
+    line-height: 22px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    margin-top: 5px;
+    transition: background-color 0.2s;
+}
+.input-file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+
+
+.add_screen .add_button {
+    padding: 1em;
+    margin-top: 7px;
+    background: #620CAC;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+

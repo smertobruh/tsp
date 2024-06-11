@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru-RU" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+
+
+
+    <!-- This site is optimized with the Yoast SEO plugin v20.10 - https://yoast.com/wordpress/plugins/seo/ -->
+    <title th:text="${car.getTrademark} + ${car.getModel}"></title>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+
+    <script>
+        $( document ).ready(function() {
+            $( function() {
+                var dates = $("#start-date, #end-date").datepicker({
+                    defaultDate: "+2d",
+                    changeMonth: true,
+                    numberOfMonths: 1,
+                    minDate: 0,
+                    onSelect: function(selectedDate) {
+                        var option = this.id == "start-date" ? "minDate" : "maxDate",
+                        instance = $(this).data("datepicker"),
+                        date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+                        dates.not(this).datepicker("option", option, date);
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+<header>
+    <a th:href="@{/}">
+        <ion-icon name="home"></ion-icon>
+    </a>
+
+</header>
+
+    <div class="car_info">
+        <div class="top">
+            <img th:src="@{/image/} + ${car.getPreviewImageID}">
+
+
+        </div>
+
+
+        <ul class="characteristics">
+            <li class="trademark" th:text="${car.getTrademark} + ' ' +  ${car.getModel}"></li>
+            <label for="clazz"> Класс: </label>
+            <li class="clazz" id="clazz" th:text="${car.getClazz}"></li>
+            <label for="power"> Мощность: </label>
+            <li class="power" id="power" th:text="${car.getEnginePower}"></li>
+            <label for="price"> Цена за сутки: </label>
+            <li class="price" id="price" th:text="${car.getPrice}"></li>
+        </ul>
+
+        <div class="booking_section">
+            <form class="booking_form" role="form" id="widget_booking_form" name="widget_booking_form" th:method="POST" th:action="@{/car/} + ${car.getId} + @{/booking}" th:object="${bookingDTO}" >
+                <!--check in element-->
+                <div class="form-group">
+                    <label for="start-date">Начало</label> <!-- <input type="textfield" class="form-control" id="check-in" placeholder="12.20.2014"> -->
+                    <input type="text"  class="start-date" id="start-date" name="start-date" placeholder="mm/dd/yyyy" th:field="*{startTime}">
+                </div>
+                <!--check out element-->
+                <div class="form-group">
+                    <label for="end-date">Конец</label> <!-- <input type="textfield" class="form-control" id="check-out" placeholder="12.27.2014"> -->
+                    <input type="text" class="end-date" id="end-date" name="end-date" placeholder="mm/dd/yyyy" th:field="*{endTime}" >
+                </div>
+
+                <input type="hidden"  th:value="${car.getId}"  name="bookCarId">
+                <input type="hidden"  th:value="${user.getId}"   name="bookUserId">
+                <!--submit-->
+                <div th:if="${errorMessage}"  style="color: red">
+                    Дата пересекается с другими бронями
+                </div>
+                <div class="booking_button">
+                    <button name="Submit" class="btn">Забронировать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
